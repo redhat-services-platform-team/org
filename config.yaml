@@ -1,6 +1,7 @@
 orgs:
   redhat-services-platform-team:
     admins:
+      - sabre1041
       - tech2734
       - thaas3
     billing_email: thaas@redhat.com
@@ -9,13 +10,22 @@ orgs:
     email: ""
     has_organization_projects: true
     has_repository_projects: true
-    members_can_create_repositories: false
+    members_can_create_repositories: true
     name: Redhat Services Platform Team
     members:
       - abenavid
       - bontreger
       - djdanielsson
+      - gms-x
+      - iamgini
       - jeffmcutter
-      - sabre1041
-      - tech2734
-      - thaas3
+    teams:
+      maintainers:
+        description: ""
+        privacy: closed
+        maintainers:
+          - sabre1041
+          - tech2734
+          - thaas3
+        members:
+          - djdanielsson
