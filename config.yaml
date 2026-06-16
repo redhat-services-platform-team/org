@@ -1,0 +1,21 @@
+orgs:
+  redhat-services-platform-team:
+    admins:
+      - tech2734
+      - thaas3
+    billing_email: thaas@redhat.com
+    company: ""
+    default_repository_permission: read
+    email: ""
+    has_organization_projects: true
+    has_repository_projects: true
+    members_can_create_repositories: false
+    name: Redhat Services Platform Team
+    members:
+      - abenavid
+      - bontreger
+      - djdanielsson
+      - jeffmcutter
+      - sabre1041
+      - tech2734
+      - thaas3
