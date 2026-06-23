@@ -29,3 +29,23 @@ orgs:
           - thaas3
         members:
           - djdanielsson
+      americas-spt:
+        description: "Americas Ansible SPT"
+        privacy: closed
+        maintainers:
+          - ansiblejunky
+          - bontreger
+          - killumslow
+          - wbentley15
+        members:
+          - christophermay07
+          - cllebyo
+          - david-igou
+          - ifloresv86
+          - jyamamoto
+          - mdidato
+          - rexiclesprime
+          - stoleas
+          - wmckinley1
+        repos:
+          ready-to-use-content: admin
