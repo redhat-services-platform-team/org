@@ -33,13 +33,14 @@ orgs:
         description: "Americas Ansible SPT"
         privacy: closed
         maintainers:
+          - ansiblejunky
           - bontreger
           - killumslow
           - wbentley15
         members:
-          - ansiblejunky
           - christophermay07
           - cllebyo
+          - david-igou
           - ifloresv86
           - jyamamoto
           - mdidato
