@@ -60,4 +60,14 @@ orgs:
           - stoleas
           - wmckinley1
         repos:
+          ready-to-use-content: write
+      americas-spt-admins:
+        description: "Americas Ansible SPT Admins"
+        privacy: closed
+        maintainers:
+          - ansiblejunky
+          - bontreger
+          - killumslow
+          - wbentley15
+        repos:
           ready-to-use-content: admin
