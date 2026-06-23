@@ -14,11 +14,23 @@ orgs:
     name: Redhat Services Platform Team
     members:
       - abenavid
+      - ansiblejunky
       - bontreger
+      - christophermay07
+      - cllebyo
+      - david-igou
       - djdanielsson
       - gms-x
       - iamgini
+      - ifloresv86
       - jeffmcutter
+      - jyamamoto
+      - killumslow
+      - mdidato
+      - rexiclesprime
+      - stoleas
+      - wbentley15
+      - wmckinley1
     teams:
       maintainers:
         description: ""
