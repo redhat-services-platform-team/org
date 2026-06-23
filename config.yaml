@@ -47,3 +47,5 @@ orgs:
           - rexiclesprime
           - stoleas
           - wmckinley1
+        repos:
+          ready-to-use-content: admin
