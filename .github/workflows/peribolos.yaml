@@ -1,0 +1,66 @@
+name: Sync Org Configuration
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - config.yaml
+
+  pull_request:
+    branches:
+      - main
+    paths:
+      - config.yaml
+
+jobs:
+  peribolos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+          cache: false
+
+      - name: Install Peribolos
+        run: go install sigs.k8s.io/prow/cmd/peribolos@latest
+
+      - name: Write token file
+        run: |
+          echo "${{ secrets.ORG_ADMIN_TOKEN }}" > /tmp/gh-token
+          chmod 600 /tmp/gh-token
+
+      - name: Validate config (dry run)
+        if: github.event_name == 'pull_request'
+        run: |
+          peribolos \
+            --config-path config.yaml \
+            --github-token-path /tmp/gh-token \
+            --fix-org \
+            --fix-org-members \
+            --fix-teams \
+            --fix-team-members \
+            --fix-team-repos \
+            --min-admins=2
+
+      - name: Apply config
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          peribolos \
+            --config-path config.yaml \
+            --github-token-path /tmp/gh-token \
+            --fix-org \
+            --fix-org-members \
+            --fix-teams \
+            --fix-team-members \
+            --fix-team-repos \
+            --min-admins=2 \
+            --confirm
+
+      - name: Clean up token
+        if: always()
+        run: rm -f /tmp/gh-token
