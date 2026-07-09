@@ -76,7 +76,6 @@ orgs:
           - wbentley15
         repos:
           ready-to-use-content: admin
-          new-random-repo: admin
       naps-sec:
         description: ""
         privacy: closed
