@@ -18,7 +18,10 @@ This repository manages the GitHub organization configuration for **redhat-servi
 | New repository | Add an entry under `repos:` at the org level |
 | New team | Add an entry under `teams:` |
 | New team member | Add your GitHub username to `members:` (org level) **and** to the relevant team |
-| Team repo permissions | Add the repo under the team's `repos:` with a permission level |
+| Remove org or team member | Remove the username from `members:` (org level and/or team) |
+| Change team maintainers | Edit `maintainers:` on the team |
+| Team repo permissions | Add or update the repo under the team's `repos:` with a permission level |
+| Remove team repo access | Remove the repo from the team's `repos:` section |
 | Change repo settings | Modify fields under the repo's entry in `repos:` |
 
 ### Permission Levels
@@ -30,6 +33,20 @@ This repository manages the GitHub organization configuration for **redhat-servi
 | `write` | Push to the repository and manage issues/PRs |
 | `maintain` | Write plus manage repo settings (no destructive actions) |
 | `admin` | Full access including settings, secrets, and team management |
+
+## Existing Teams
+
+Use this table to find the right team when requesting access. See `config.yaml` for the current membership lists.
+
+| Team | Description | Repository Access |
+|---|---|---|
+| `maintainers` | Organization maintainers | `org`: write |
+| `americas-spt` | Americas Ansible SPT | `ready-to-use-content`: write |
+| `americas-spt-admins` | Americas Ansible SPT Admins | `ready-to-use-content`: admin |
+| `naps-sec` | NAPS Security Team | `rhel-stig-content`: write |
+| `naps-sec-admins` | NAPS Security Team Admins (nested under `naps-sec`) | `rhel-stig-content`: admin |
+
+Team maintainers can manage team membership. Contact a team maintainer or an org admin if you are unsure which team to join.
 
 ## Step-by-Step: Submitting a Change
 
@@ -73,9 +90,11 @@ Once approved and merged to `main`, the pipeline applies the changes to the GitH
 
 ## Examples
 
+All examples below are nested under `orgs.redhat-services-platform-team` in `config.yaml`. Indentation in the snippets matches that level.
+
 ### Request a new repository
 
-Add an entry under the `repos:` section at the org level:
+Add an entry under the org-level `repos:` section:
 
 ```yaml
     repos:
@@ -83,6 +102,7 @@ Add an entry under the `repos:` section at the org level:
         description: "Description of the repository"
         default_branch: main
         has_projects: true
+        private: true   # set to false for a public repository
 ```
 
 Then grant a team access under that team's `repos:` section:
@@ -140,6 +160,31 @@ Add the repo under the team's `repos:` section with the desired permission:
           target-repo: write
 ```
 
+### Request a nested sub-team (tiered access)
+
+Use nested teams when a group needs elevated permissions on the same repositories. The `naps-sec` team in `config.yaml` follows this pattern:
+
+```yaml
+      naps-sec:
+        description: "NAPS Security Team"
+        privacy: closed
+        members:
+          - team-member
+        repos:
+          rhel-stig-content: write
+        teams:
+          naps-sec-admins:
+            description: "NAPS Security Team Admins"
+            privacy: closed
+            maintainers:
+              - team-lead-username
+            members: []
+            repos:
+              rhel-stig-content: admin
+```
+
+Members of the parent team get write access; members of the nested sub-team get admin access.
+
 ## Config Structure Reference
 
 ```yaml
@@ -151,6 +196,7 @@ orgs:
       repo-name:
         description: "..."
         default_branch: main
+        private: true
     teams:           # Team definitions
       team-name:
         description: "..."
@@ -170,6 +216,7 @@ orgs:
 - **Users cannot appear in both `admins` and `members`.** Admins are implicitly members.
 - **Keep lists alphabetically sorted** for consistency and easier review.
 - **Use nested teams** for tiered access (e.g., `my-team` for write, `my-team-admins` for admin).
+- **Define repos at the org level first.** A team cannot be granted access to a repo that is not listed under the org-level `repos:` section.
 
 ## Questions?
 
