@@ -220,4 +220,4 @@ orgs:
 
 ## Questions?
 
-Contact an org admin: sabre1041, tech2734, thaas3, or Tompage1994.
+Contact an org admin: tech2734 or thaas3.
