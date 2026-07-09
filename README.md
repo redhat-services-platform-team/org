@@ -1,8 +1,21 @@
-# org
+# Red Hat Services Platform Team — GitHub Organization Management
 
 Red Hat Services Platform Team GitHub Organization Metadata
 
 This repository manages the GitHub organization configuration for **redhat-services-platform-team** using [Peribolos](https://docs.prow.k8s.io/docs/components/cli-tools/peribolos/). All changes to org membership, teams, repositories, and permissions are made through the `config.yaml` file and applied automatically via a GitHub Actions pipeline.
+
+## Contents
+
+- [How It Works](#how-it-works)
+- [What You Can Request](#what-you-can-request)
+- [Existing Teams](#existing-teams)
+- [Who Can Submit Changes](#who-can-submit-changes)
+- [Step-by-Step: Submitting a Change](#step-by-step-submitting-a-change)
+- [Examples](#examples)
+- [Config Structure Reference](#config-structure-reference)
+- [Troubleshooting](#troubleshooting)
+- [Important Notes](#important-notes)
+- [Questions?](#questions)
 
 ## How It Works
 
@@ -60,7 +73,21 @@ Use this table to find the right team when requesting access. See `config.yaml` 
 
 Team maintainers can manage team membership. Contact a team maintainer or an org admin if you are unsure which team to join.
 
+## Who Can Submit Changes
+
+Only members of the **`maintainers`** team can push branches and open pull requests on this repository. The `maintainers` team has write access to the `org` repo; all other org members have read access by default.
+
+If you are not on the `maintainers` team, contact a **team maintainer** or an **org admin** (see [Questions?](#questions)) and provide:
+
+- Your GitHub username
+- The team or repository you need access to
+- A brief reason for the change
+
+A maintainer will open the pull request on your behalf using the details you provide.
+
 ## Step-by-Step: Submitting a Change
+
+The steps below are for members of the **`maintainers`** team who can push to this repository directly.
 
 ### 1. Clone the repository
 
@@ -112,7 +139,7 @@ Use a clear title and include enough context for reviewers:
 | **Title** | `Request: <what you need>` — e.g. `Request: add jsmith to americas-spt` |
 | **Body** | GitHub username(s), team or repo affected, and brief justification |
 
-Example body:
+Example body (use this format when requesting a change from a maintainer, even if you are not opening the PR yourself):
 
 ```markdown
 ## Summary
@@ -230,25 +257,30 @@ Members of the parent team get write access; members of the nested sub-team get 
 ```yaml
 orgs:
   redhat-services-platform-team:
-    admins:          # Org administrators (GitHub usernames)
-    members:         # Org members (GitHub usernames, alphabetical)
-    repos:           # Repository definitions
+    admins:                          # Org administrators (GitHub usernames)
+    members:                         # Org members (GitHub usernames, alphabetical)
+    default_repository_permission: read
+    members_can_create_repositories: false
+    repos:                           # Repository definitions
       repo-name:
         description: "..."
         default_branch: main
         private: true
-    teams:           # Team definitions
+        has_projects: true
+    teams:                           # Team definitions
       team-name:
         description: "..."
         privacy: closed
-        maintainers:   # Team maintainers (can manage team membership)
-        members:       # Team members
-        repos:         # Repos this team has access to
+        maintainers:                 # Can manage team membership
+        members:                     # Receive team repo permissions
+        repos:                       # Repos this team has access to
           repo-name: write
-        teams:         # Nested sub-teams (optional)
+        teams:                       # Nested sub-teams (optional)
           sub-team-name:
             ...
 ```
+
+On a team, **`maintainers`** can add or remove team members. **`members`** receive the team's repository permissions but cannot manage team membership.
 
 ## Troubleshooting
 
@@ -262,6 +294,7 @@ Open the **Sync Org Configuration** check on your pull request and expand the fa
 
 | Error / symptom | Likely cause | Fix |
 |---|---|---|
+| Permission denied on push | Not on the `maintainers` team | Ask a maintainer or org admin to open the PR for you |
 | Unknown user or 404 for a member | GitHub username is wrong or the account does not exist | Verify the username on GitHub and fix spelling/casing |
 | User listed in both `admins` and `members` | Duplicate entry | Remove the user from `members`; admins are implicit members |
 | Fewer than 2 admins | `--min-admins=2` enforced by the pipeline | Ensure at least two usernames remain under `admins` |
@@ -284,4 +317,4 @@ If reviews are complete but merge is still blocked, check **Required checks** on
 
 ## Questions?
 
-Contact an org admin: tech2734 or thaas3.
+Contact an org admin: [@tech2734](https://github.com/tech2734) or [@thaas3](https://github.com/thaas3).
