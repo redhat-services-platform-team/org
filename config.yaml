@@ -19,6 +19,7 @@ orgs:
         description: "RHEL STIG Content"
         default_branch: main
         has_projects: true
+        private: true
     members:
       - abenavid
       - andthoma
