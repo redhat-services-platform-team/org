@@ -53,7 +53,8 @@ orgs:
           - Tompage1994
         members:
           - djdanielsson
-        repos: {}
+        repos:
+          org: write
       americas-spt:
         description: "Americas Ansible SPT"
         privacy: closed
