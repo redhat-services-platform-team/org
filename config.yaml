@@ -11,7 +11,8 @@ orgs:
     email: ""
     has_organization_projects: true
     has_repository_projects: true
-    members_can_create_repositories: true
+    description: The Red Hat Services Platform Team
+    members_can_create_repositories: false
     name: Redhat Services Platform Team
     repos:
       rhel-stig-content:
@@ -43,7 +44,7 @@ orgs:
       - wmckinley1
     teams:
       maintainers:
-        description: ""
+        description: "Organization maintainers"
         privacy: closed
         maintainers:
           - sabre1041
@@ -52,6 +53,7 @@ orgs:
           - Tompage1994
         members:
           - djdanielsson
+        repos: {}
       americas-spt:
         description: "Americas Ansible SPT"
         privacy: closed
@@ -79,10 +81,11 @@ orgs:
           - bontreger
           - killumslow
           - wbentley15
+        members: []
         repos:
           ready-to-use-content: admin
       naps-sec:
-        description: ""
+        description: "NAPS Security Team"
         privacy: closed
         members:
           - andthoma
@@ -92,3 +95,12 @@ orgs:
           - maford-redhat
         repos:
           rhel-stig-content: write
+        teams:
+          naps-sec-admins:
+            description: "NAPS Security Team Admins"
+            privacy: closed
+            maintainers:
+              - athias
+            members: []
+            repos:
+              rhel-stig-content: admin
