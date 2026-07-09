@@ -11,6 +11,18 @@ This repository manages the GitHub organization configuration for **redhat-servi
 3. An org admin reviews and approves the pull request.
 4. Once merged to `main`, the pipeline runs again with `--confirm` to **apply the changes** to the GitHub org.
 
+### When the pipeline runs
+
+The **Sync Org Configuration** workflow runs only when `config.yaml` is changed:
+
+| Event | Trigger |
+|---|---|
+| Pull request to `main` | `config.yaml` changed → dry-run validation |
+| Merge to `main` | `config.yaml` changed → apply with `--confirm` |
+| README or other files only | Workflow does **not** run |
+
+Changes to `README.md` alone do not need Peribolos validation, but branch protection still requires the `peribolos` status check to merge. For documentation-only pull requests, ask an org admin to merge with **bypass rules** after review.
+
 ## What You Can Request
 
 | Request Type | Where to Edit in `config.yaml` |
@@ -52,8 +64,17 @@ Team maintainers can manage team membership. Contact a team maintainer or an org
 
 ### 1. Clone the repository
 
+Using SSH:
+
 ```bash
 git clone git@github.com:redhat-services-platform-team/org.git
+cd org
+```
+
+Using HTTPS:
+
+```bash
+git clone https://github.com/redhat-services-platform-team/org.git
 cd org
 ```
 
@@ -82,7 +103,26 @@ git push -u origin request/my-change-description
 
 ### 5. Open a pull request
 
-Go to https://github.com/redhat-services-platform-team/org/pulls and create a pull request from your branch. The pipeline will automatically run a dry-run validation. If the dry run passes, request a review from an org admin.
+Go to [the pull requests page](https://github.com/redhat-services-platform-team/org/pulls) and create a pull request from your branch. If you changed `config.yaml`, the pipeline automatically runs a dry-run validation. If the dry run passes, request a review from an org admin.
+
+Use a clear title and include enough context for reviewers:
+
+| Field | Guidance |
+|---|---|
+| **Title** | `Request: <what you need>` — e.g. `Request: add jsmith to americas-spt` |
+| **Body** | GitHub username(s), team or repo affected, and brief justification |
+
+Example body:
+
+```markdown
+## Summary
+- Add `jsmith` to org members and `americas-spt` team
+
+## Details
+- GitHub username: jsmith
+- Team: americas-spt
+- Reason: New member of the Americas SPT group
+```
 
 ### 6. Merge and apply
 
@@ -209,6 +249,30 @@ orgs:
           sub-team-name:
             ...
 ```
+
+## Troubleshooting
+
+### The pipeline did not run on my pull request
+
+The workflow only triggers when `config.yaml` is in the diff. README-only changes will not start Peribolos. See [When the pipeline runs](#when-the-pipeline-runs) above.
+
+### The pipeline failed (config changes)
+
+Open the **Sync Org Configuration** check on your pull request and expand the failed step log. Common causes:
+
+| Error / symptom | Likely cause | Fix |
+|---|---|---|
+| Unknown user or 404 for a member | GitHub username is wrong or the account does not exist | Verify the username on GitHub and fix spelling/casing |
+| User listed in both `admins` and `members` | Duplicate entry | Remove the user from `members`; admins are implicit members |
+| Fewer than 2 admins | `--min-admins=2` enforced by the pipeline | Ensure at least two usernames remain under `admins` |
+| Repo not found for team | Repo missing from org-level `repos:` | Add the repo under `orgs.redhat-services-platform-team.repos` first |
+| Dry run passes but merge is blocked | Required `peribolos` check missing | Confirm `config.yaml` is in the PR; re-push if needed |
+
+Fix the issue, commit, and push to the same branch. The workflow re-runs automatically.
+
+### Merge blocked despite approval
+
+If reviews are complete but merge is still blocked, check **Required checks** on the pull request. Config changes need a passing `peribolos` check. Documentation-only changes may need an org admin to bypass the missing check after review.
 
 ## Important Notes
 
