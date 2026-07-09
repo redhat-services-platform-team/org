@@ -13,6 +13,11 @@ orgs:
     has_repository_projects: true
     members_can_create_repositories: true
     name: Redhat Services Platform Team
+    repos:
+      rhel-stig-content:
+        description: "RHEL STIG Content"
+        default_branch: main
+        has_projects: true
     members:
       - abenavid
       - andthoma
