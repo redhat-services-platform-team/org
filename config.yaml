@@ -4,6 +4,7 @@ orgs:
       - sabre1041
       - tech2734
       - thaas3
+      - Tompage1994
     billing_email: thaas@redhat.com
     company: ""
     default_repository_permission: read
@@ -14,21 +15,26 @@ orgs:
     name: Redhat Services Platform Team
     members:
       - abenavid
+      - andthoma
       - ansiblejunky
+      - athias
       - bontreger
       - christophermay07
       - cllebyo
+      - curt-matthews
       - david-igou
       - djdanielsson
-      - gms-x
+      - frost-knight
+      - Gms-x
       - iamgini
       - ifloresv86
       - jeffmcutter
       - jyamamoto
       - killumslow
+      - maford-redhat
       - mdidato
-      - rexiclesprime
       - stoleas
+      - Tompage1994
       - wbentley15
       - wmckinley1
     teams:
@@ -39,6 +45,7 @@ orgs:
           - sabre1041
           - tech2734
           - thaas3
+          - Tompage1994
         members:
           - djdanielsson
       americas-spt:
@@ -56,7 +63,6 @@ orgs:
           - ifloresv86
           - jyamamoto
           - mdidato
-          - rexiclesprime
           - stoleas
           - wmckinley1
         repos:
@@ -72,3 +78,14 @@ orgs:
         repos:
           ready-to-use-content: admin
           new-random-repo: admin
+      naps-sec:
+        description: ""
+        privacy: closed
+        members:
+          - andthoma
+          - athias
+          - curt-matthews
+          - frost-knight
+          - maford-redhat
+        repos:
+          rhel-stig-content: write

@@ -44,6 +44,7 @@ jobs:
             --fix-org-members \
             --fix-teams \
             --fix-team-members \
+            --fix-repos \
             --fix-team-repos \
             --min-admins=2
 
@@ -55,6 +56,7 @@ jobs:
             --github-token-path /tmp/gh-token \
             --fix-org \
             --fix-org-members \
+            --fix-repos \
             --fix-teams \
             --fix-team-members \
             --fix-team-repos \
