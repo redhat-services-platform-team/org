@@ -15,6 +15,11 @@ orgs:
     members_can_create_repositories: false
     name: Redhat Services Platform Team
     repos:
+      ansible-content-library-tooling:
+        description: "Ansible Content Library Tooling"
+        default_branch: main
+        has_projects: true
+        private: true
       rhel-stig-content:
         description: "RHEL STIG Content"
         default_branch: main
@@ -86,6 +91,25 @@ orgs:
         members: []
         repos:
           ready-to-use-content: admin
+      ansible-content-library-tooling:
+        description: "Ansible Content Library Tooling Team"
+        privacy: closed
+        maintainers:
+          - stoleas
+          - wmckinley1
+        members: []
+        repos:
+          ansible-content-library-tooling: write
+        teams:
+          ansible-content-library-tooling-admins:
+            description: "Ansible Content Library Tooling Admins"
+            privacy: closed
+            maintainers:
+              - stoleas
+              - wmckinley1
+            members: []
+            repos:
+              ansible-content-library-tooling: admin
       naps-sec:
         description: "NAPS Security Team"
         privacy: closed
