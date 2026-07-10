@@ -13,6 +13,8 @@ on:
     paths:
       - config.yaml
 
+  workflow_dispatch:
+
 jobs:
   peribolos:
     runs-on: ubuntu-latest
@@ -49,19 +51,26 @@ jobs:
             --min-admins=2
 
       - name: Apply config
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || github.event_name == 'workflow_dispatch'
         run: |
-          peribolos \
-            --config-path config.yaml \
-            --github-token-path /tmp/gh-token \
-            --fix-org \
-            --fix-org-members \
-            --fix-repos \
-            --fix-teams \
-            --fix-team-members \
-            --fix-team-repos \
-            --min-admins=2 \
-            --confirm
+          for attempt in 1 2 3; do
+            echo "Attempt $attempt of 3"
+            peribolos \
+              --config-path config.yaml \
+              --github-token-path /tmp/gh-token \
+              --fix-org \
+              --fix-org-members \
+              --fix-repos \
+              --fix-teams \
+              --fix-team-members \
+              --fix-team-repos \
+              --min-admins=2 \
+              --confirm && exit 0
+            echo "Attempt $attempt failed, waiting 30s before retry..."
+            sleep 30
+          done
+          echo "All attempts failed"
+          exit 1
 
       - name: Clean up token
         if: always()
