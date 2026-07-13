@@ -20,6 +20,11 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
+      sellers-ansible-content-tooling:
+        description: "Sellers Ansible Content Tooling"
+        default_branch: main
+        has_projects: true
+        private: true
       rhel-stig-content:
         description: "RHEL STIG Content"
         default_branch: main
@@ -100,6 +105,7 @@ orgs:
         members: []
         repos:
           ansible-content-library-tooling: write
+          sellers-ansible-content-tooling: write
         teams:
           ansible-content-library-tooling-admins:
             description: "Ansible Content Library Tooling Admins"
@@ -110,6 +116,7 @@ orgs:
             members: []
             repos:
               ansible-content-library-tooling: admin
+              sellers-ansible-content-tooling: admin
       naps-sec:
         description: "NAPS Security Team"
         privacy: closed
