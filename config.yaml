@@ -15,6 +15,11 @@ orgs:
     members_can_create_repositories: false
     name: Redhat Services Platform Team
     repos:
+      acl-ready-to-use-content:
+        description: "Ansible Content Library - Ready to Use Content"
+        default_branch: main
+        has_projects: true
+        private: true
       ansible-content-library-tooling:
         description: "Ansible Content Library Tooling"
         default_branch: main
@@ -84,6 +89,7 @@ orgs:
           - stoleas
           - wmckinley1
         repos:
+          acl-ready-to-use-content: write
           ready-to-use-content: write
       americas-spt-admins:
         description: "Americas Ansible SPT Admins"
@@ -95,6 +101,7 @@ orgs:
           - wbentley15
         members: []
         repos:
+          acl-ready-to-use-content: admin
           ready-to-use-content: admin
       ansible-content-library-tooling:
         description: "Ansible Content Library Tooling Team"
