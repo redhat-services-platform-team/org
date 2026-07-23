@@ -30,6 +30,21 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
+      ansible-amers-ai-standards:
+        description: "Americas AI Standards for Ansible"
+        default_branch: main
+        has_projects: true
+        private: true
+      ready-to-use-content:
+        description: "Previously called starter package. This collection was originally created by the APAC Tech Sales team."
+        default_branch: main
+        has_projects: true
+        private: true
+      org:
+        description: "Red Hat Services Platform Team GitHub Organization Metadata"
+        default_branch: main
+        has_projects: true
+        private: false
       rhel-stig-content:
         description: "RHEL STIG Content"
         default_branch: main
@@ -90,6 +105,7 @@ orgs:
           - wmckinley1
         repos:
           acl-ready-to-use-content: write
+          ansible-amers-ai-standards: write
           ready-to-use-content: write
       americas-spt-admins:
         description: "Americas Ansible SPT Admins"
@@ -102,6 +118,7 @@ orgs:
         members: []
         repos:
           acl-ready-to-use-content: admin
+          ansible-amers-ai-standards: admin
           ready-to-use-content: admin
       ansible-content-library-tooling:
         description: "Ansible Content Library Tooling Team"
@@ -109,7 +126,8 @@ orgs:
         maintainers:
           - stoleas
           - wmckinley1
-        members: []
+        members:
+          - ansiblejunky
         repos:
           ansible-content-library-tooling: write
           sellers-ansible-content-tooling: write
