@@ -35,6 +35,16 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
+      ready-to-use-content:
+        description: "Previously called starter package. This collection was originally created by the APAC Tech Sales team."
+        default_branch: main
+        has_projects: true
+        private: true
+      org:
+        description: "Red Hat Services Platform Team GitHub Organization Metadata"
+        default_branch: main
+        has_projects: true
+        private: false
       rhel-10-baseline-iso:
         description: "RHEL 10 Baseline ISO customizer"
         default_branch: main
@@ -121,7 +131,8 @@ orgs:
         maintainers:
           - stoleas
           - wmckinley1
-        members: []
+        members:
+          - ansiblejunky
         repos:
           ansible-content-library-tooling: write
           sellers-ansible-content-tooling: write
