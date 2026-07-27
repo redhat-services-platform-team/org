@@ -45,6 +45,11 @@ orgs:
         default_branch: main
         has_projects: true
         private: false
+      rhel-10-baseline-iso:
+        description: "RHEL 10 Baseline ISO customizer"
+        default_branch: main
+        has_projects: true
+        private: true
       rhel-stig-content:
         description: "RHEL STIG Content"
         default_branch: main
@@ -152,6 +157,7 @@ orgs:
           - frost-knight
           - maford-redhat
         repos:
+          rhel-10-baseline-iso: write
           rhel-stig-content: write
         teams:
           naps-sec-admins:
@@ -159,6 +165,8 @@ orgs:
             privacy: closed
             maintainers:
               - athias
+              - curt-matthews
             members: []
             repos:
+              rhel-10-baseline-iso: admin
               rhel-stig-content: admin
