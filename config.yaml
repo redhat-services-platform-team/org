@@ -153,7 +153,7 @@ orgs:
         repos:
           rhel-10-baseline-iso: write
           rhel-10-stig-manual: write
-          rhely-stig-content: write
+          rhel-stig-content: write
         teams:
           naps-sec-admins:
             description: "NAPS Security Team Admins"
