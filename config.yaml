@@ -35,6 +35,16 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
+      ready-to-use-content:
+        description: "Previously called starter package. This collection was originally created by the APAC Tech Sales team."
+        default_branch: main
+        has_projects: true
+        private: true
+      org:
+        description: "Red Hat Services Platform Team GitHub Organization Metadata"
+        default_branch: main
+        has_projects: true
+        private: false
       rhel-10-baseline-iso:
         description: "RHEL 10 Baseline ISO customizer"
         default_branch: main
@@ -42,6 +52,11 @@ orgs:
         private: true
       rhel-10-stig-manual:
         description: "RHEL 10 Manual STIG Runbook"
+        default_branch: main
+        has_projects: true
+        private: true
+      automation-coe-content:
+        description: "Automation CoE Content"
         default_branch: main
         has_projects: true
         private: true
@@ -71,6 +86,7 @@ orgs:
       - maford-redhat
       - mdidato
       - stoleas
+      - vanslam
       - wbentley15
       - wmckinley1
     teams:
@@ -106,6 +122,7 @@ orgs:
         repos:
           acl-ready-to-use-content: write
           ansible-amers-ai-standards: write
+          automation-coe-content: write
           ready-to-use-content: write
       americas-spt-admins:
         description: "Americas Ansible SPT Admins"
@@ -119,6 +136,7 @@ orgs:
         repos:
           acl-ready-to-use-content: admin
           ansible-amers-ai-standards: admin
+          automation-coe-content: admin
           ready-to-use-content: admin
       ansible-content-library-tooling:
         description: "Ansible Content Library Tooling Team"
@@ -126,7 +144,8 @@ orgs:
         maintainers:
           - stoleas
           - wmckinley1
-        members: []
+        members:
+          - ansiblejunky
         repos:
           ansible-content-library-tooling: write
           sellers-ansible-content-tooling: write
@@ -150,6 +169,7 @@ orgs:
           - curt-matthews
           - frost-knight
           - maford-redhat
+          - vanslam
         repos:
           rhel-10-baseline-iso: write
           rhel-10-stig-manual: write
