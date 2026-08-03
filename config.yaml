@@ -40,6 +40,11 @@ orgs:
         default_branch: main
         has_projects: true
         private: true
+      rhel-10-stig-manual:
+        description: "RHEL 10 Manual STIG Runbook"
+        default_branch: main
+        has_projects: true
+        private: true
       rhel-stig-content:
         description: "RHEL STIG Content"
         default_branch: main
@@ -147,7 +152,8 @@ orgs:
           - maford-redhat
         repos:
           rhel-10-baseline-iso: write
-          rhel-stig-content: write
+          rhel-10-stig-manual: write
+          rhely-stig-content: write
         teams:
           naps-sec-admins:
             description: "NAPS Security Team Admins"
@@ -158,4 +164,5 @@ orgs:
             members: []
             repos:
               rhel-10-baseline-iso: admin
+              rhel-10-stig-manual: admin
               rhel-stig-content: admin
