@@ -1,6 +1,7 @@
 orgs:
   redhat-services-platform-team:
     admins:
+      - djdanielsson
       - sabre1041
       - tech2734
       - thaas3
@@ -75,7 +76,6 @@ orgs:
       - cllebyo
       - curt-matthews
       - david-igou
-      - djdanielsson
       - frost-knight
       - Gms-x
       - iamgini
@@ -98,8 +98,7 @@ orgs:
           - tech2734
           - thaas3
           - Tompage1994
-        members:
-          - djdanielsson
+        members: []
         repos:
           org: write
       americas-spt:
