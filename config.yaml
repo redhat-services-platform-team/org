@@ -83,7 +83,7 @@ orgs:
       - stoleas
       - vanslam
       - wbentley15
-      - wmckinley1      
+      - wmckinley1
     teams:
       maintainers:
         description: "Organization maintainers"
