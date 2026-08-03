@@ -81,6 +81,7 @@ orgs:
       - maford-redhat
       - mdidato
       - stoleas
+      - vanslam
       - wbentley15
       - wmckinley1
     teams:
@@ -163,6 +164,7 @@ orgs:
           - curt-matthews
           - frost-knight
           - maford-redhat
+          - vanslam
         repos:
           rhel-10-baseline-iso: write
           rhel-stig-content: write
